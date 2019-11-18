@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--开启注解驱动-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+    <!--配置扫描包-->
+    <context:component-scan
+            base-package="com.second.controller"/>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--配置视图的前缀-->
+        <property name="prefix" value="/WEB-INF/pages/" />
+        <!--配置视图后缀-->
+        <!--
+                <property name="suffix" value=".jsp" />
+        -->
+    </bean>
+
+    <!--配置文件上传-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置文件编码格式-->
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--设置最大上传大小-->
+        <property name="maxUploadSize" value="10240000" />
+    </bean>
+    <!--开启默认servlet,用以处理静态资源文件-->
+    <mvc:default-servlet-handler/>
+
+
+    <!--配置注解式AOP支持-->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+    <!--配置shiro-->
+
+    <!--设置启用shiro注解-->
+    <aop:config proxy-target-class="true"></aop:config>
+
+    <!--配置shiro 权限拦截器-->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"></property>
+    </bean>
+
+
+
+    <!--配置springmvc异常处理机制-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!--异常映射规则-->
+        <property name="exceptionMappings">
+            <props >
+                <!--key指定异常类 无权限异常-->
+                <prop key="org.apache.shiro.authz.UnauthorizedException">
+                    <!--对应异常跳转地址-->
+                    /index.jsp
+                </prop>
+            </props>
+        </property>
+    </bean>
+</beans>
