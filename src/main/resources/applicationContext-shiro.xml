@@ -54,7 +54,7 @@
                 /admin/login =anon
                 /admin/toAdd=anon
                 /admin/add=anon
-                /**=authc
+                /**=anon
             </value>
         </property>
     </bean>
