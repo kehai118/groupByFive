@@ -50,6 +50,7 @@
                 /css/**=anon
                 /images/**=anon
                 /fonts/**=anon
+                /others/**=anon
                 /admin/toLogin=anon
                 /admin/login =anon
                 /admin/toAdd=anon
