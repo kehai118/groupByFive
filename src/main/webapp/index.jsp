@@ -23,23 +23,23 @@ http://themeforest.net/licenses
     <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
     <!-- Initializer -->
-    <link rel="stylesheet" href="/others/forIndexHome/cssnormalize.css">
+    <link rel="stylesheet" href="/others/forIndexHome/css/normalize.css">
 
     <!-- Web fonts and Web Icons -->
-    <link rel="stylesheet" href="/others/forIndexHome/csspageloader.css">
+    <link rel="stylesheet" href="/others/forIndexHome/css/pageloader.css">
     <link rel="stylesheet" href="/others/forIndexHome/fonts/opensans/stylesheet.css">
     <link rel="stylesheet" href="/others/forIndexHome/fonts/asap/stylesheet.css">
     <link rel="stylesheet" href=" https://cdn.bootcss.com/ionicons/1.5.2/css/ionicons.min.css">
 
     <!-- Vendor CSS style -->
-    <link rel="stylesheet" href="/others/forIndexHome/cssfoundation.min.css">
+    <link rel="stylesheet" href="/others/forIndexHome/css/foundation.min.css">
     <link rel="stylesheet" href="/others/forIndexHome/js/vendor/jquery.fullPage.css">
     <link rel="stylesheet" href="/others/forIndexHome/js/vegas/vegas.min.css">
 
     <!-- Main CSS files -->
-    <link rel="stylesheet" href="/others/forIndexHome/cssmain.css">
-    <link rel="stylesheet" href="/others/forIndexHome/cssmain_responsive.css">
-    <link rel="stylesheet" href="/others/forIndexHome/cssstyle-font1.css">
+    <link rel="stylesheet" href="/others/forIndexHome/css/main.css">
+    <link rel="stylesheet" href="/others/forIndexHome/css/main_responsive.css">
+    <link rel="stylesheet" href="/others/forIndexHome/css/style-font1.css">
 
     <script src="/others/forIndexHome/js/vendor/modernizr-2.7.1.min.js"></script>
 </head>
@@ -66,7 +66,7 @@ http://themeforest.net/licenses
     <!--		<header class="header-top material">-->
     <div class="logo">
         <a href="#home">
-            <img src="img/logo_large.png" alt="Logo Brand">
+            <img src="/others/forIndexHome/img/logo_large.png" alt="Logo Brand">
         </a>
     </div>
     <div class="menu clearfix">
@@ -119,7 +119,7 @@ http://themeforest.net/licenses
 <!-- BEGIN OF site cover -->
 <div class="page-cover" id="home">
     <!-- Cover Background -->
-    <div class="cover-bg pos-abs full-size bg-img" data-image-src="img/bg-default.jpg"></div>
+    <div class="cover-bg pos-abs full-size bg-img" data-image-src="/others/forIndexHome/img/bg-default.jpg"></div>
 
     <!-- BEGIN OF Slideshow Background -->
     <div class="cover-bg pos-abs full-size slide-show">
@@ -152,18 +152,18 @@ http://themeforest.net/licenses
     <div class="section page-home page page-cent" id="s-home">
         <!-- Logo -->
         <div class="logo-container">
-            <img class="h-logo" src="img/logo_only.png" alt="Logo">
+            <img class="h-logo" src="/others/forIndexHome/img/logo_only.png" alt="Logo">
         </div>
         <!-- Content -->
         <section class="content">
 
             <header class="header">
                 <div class="h-left">
-                    <h2>New <strong>Company</strong></h2>
+                    <h2> 在线 <strong>考试系统</strong></h2>
                 </div>
                 <div class="h-right">
-                    <h3>Lorem <br>agency</h3>
-                    <h4 class="subhead"><a href="#when">Available here soon</a></h4>
+                    <h3>LBB<br>YYQ<br>FYW<br>DST</h3>
+                    <h4 class="subhead"><a href="#when">第二阶段项目</a></h4>
                 </div>
             </header>
         </section>
@@ -186,7 +186,7 @@ http://themeforest.net/licenses
         <section class="content">
             <div class="clock clock-countdown">
                 <div class="site-config"
-                     data-date="10/31/2015 23:00:00"
+                     data-date="12/24/2030 12:00:00"
                      data-date-timezone="+0"
                 ></div>
                 <header class="header">
@@ -200,7 +200,7 @@ http://themeforest.net/licenses
                     <!-- Optional text at top or image logo -->
                     <!--<span class="text top">here in</span>-->
                     <!-- Optional logo at top -->
-                    <span class="text top"><img class="img" alt="Logo" src="img/logo_large.png"></span>
+                    <span class="text top"><img class="img" alt="Logo" src="/others/forIndexHome/img/logo_large.png"></span>
                     <div class="digit days">000</div>
                     <div class="text">days</div>
                 </div>
@@ -361,7 +361,7 @@ http://themeforest.net/licenses
                                     <!-- End of Social links -->
                                 </li>
                                 <li>
-                                    <p><img src="img/logo_large.png" alt="Logo" class="logo"></p>
+                                    <p><img src="/others/forIndexHome/img/logo_large.png" alt="Logo" class="logo"></p>
                                     <p class="small">Bientot by <strong><a href="http://highhay.com">Brand</a></strong>. All right reserved 2015</p>
                                 </li>
                             </ul>
