@@ -1,11 +1,13 @@
 package com.second.pojo;
 
 public enum Location{
-    DEFAULT,BLOG,NOTE,CHAT;
+    DEFAULT,BLOG,NOTE,CHAT,EXAM;
 
     public String getURL(){
         switch (this){
-            case BLOG:
+            case EXAM:
+                return "/exam/home";
+                case BLOG:
                 return "/blog/index";
             case CHAT:
                 return "/chat/index";

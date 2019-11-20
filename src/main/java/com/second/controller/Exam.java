@@ -11,4 +11,9 @@ public class Exam {
         return "/exam/examHome.jsp";
     }
 
+    @RequestMapping("/doExam")
+    public String doExam(){
+        return "";
+    }
+
 }
