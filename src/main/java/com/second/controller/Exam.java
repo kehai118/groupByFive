@@ -10,4 +10,8 @@ public class Exam {
     public String examHome(){
         return "/exam/examHome.jsp";
     }
+    @RequestMapping("text")
+    public String text(){
+        return "";
+    }
 }
