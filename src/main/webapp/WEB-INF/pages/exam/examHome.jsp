@@ -9,25 +9,12 @@
 <html>
 <head>
     <title>examHome</title>
+
+    <%@include file="/WEB-INF/commonRel.jsp"%>
 </head>
 <body>
-<!DOCTYPE HTML>
-
-<html>
-
-<head>
-
-    <meta charset="utf-8">
-
-    <title>源码下载</title>
-
-
 
     <link href="/others/forExamHome/css/main.css" rel="stylesheet" media="all" />
-
-
-
-    <script src="/others/forExamHome/js/jQuery.js" type="text/javascript"></script>
 
     <script src="/others/forExamHome/js/fun.base.js" type="text/javascript"></script>
 
@@ -41,11 +28,6 @@
     <style>
         .gridMenu .quick-body .me{ float:left; width: 200px; height:200px; background:url(/others/forExamHome/images/me.png) 10px 5px no-repeat;}
     </style>
-
-
-</head>
-
-<body>
 
     <div id="julyingGridMenu" class="gridMenu">
 
@@ -130,17 +112,9 @@
                 </div>
 
                 <ul>
-
-                    <li class="qq-weibo"><a href="javascript:void(0)" target="_blank" title="网站源码">源码下载</a><span><b>01</b><font>ASP源码</font><i class="png"></i></span></li>
-
-                    <li class="blog-works"><a href="javascript:void(0)" target="_blank" title="慕浟佳的博客">慕浟佳的博客</a><span><b>02</b><font>技术博客</font><i class="png"></i></span></li>
-
+                    <li class="start-exam" data-src="/exam/selectExam"><a href="javascript:void(0)"  title="选择考试">选择考试</a><span><b>01</b><font>选择考试</font><i class="png"></i></span></li>
                 </ul>
-
             </div>
-
-
-
 
 
             <div id="examHistory" class="examHistory item">
@@ -158,13 +132,7 @@
                 </div>
 
                 <ul>
-
-                    <li class="travel-photography"><a href="javascript:void(0)" target="_blank" title="一起去旅行">一起去旅行</a><span><b>01</b><font>一起去旅行吧</font><i class="png"></i></span></li>
-
-                    <li class="website-front-end"><a href="javascript:void(0)" target="_blank" title="前端编程">前端编程</a><span><b>02</b><font>前端、web端编程</font><i class="png"></i></span></li>
-
-                    <li class="mobile-terminal"><a href="javascript:void(0)" target="_blank" title="手机端编程">手机端编程</a><span><b>03</b><font>手机端编程</font><i class="png"></i></span></li>
-
+                    <li class="history-exam"><a href="javascript:void(0)" title="考试历史">考试历史</a><span><b>01</b><font>考试历史</font><i class="png"></i></span></li>
                 </ul>
 
             </div>
@@ -184,12 +152,11 @@
                 </div>
 
                 <ul>
-                    <li class="apply-confirm"><a href="javascript:void(0)" target="_blank" title="申请确认">申请确认</a><span><b>01</b><font>申请确认</font><i class="png"></i></span></li>
+                    <li class="apply-confirm"><a href="javascript:void(0)"  title="申请确认">申请确认</a><span><b>01</b><font>申请确认</font><i class="png"></i></span></li>
 
-                    <li class="student-affair"><a href="javascript:void(0)" target="_blank" title="学生事务">学生事务</a><span><b>02</b><font>学生事务</font><i class="png"></i></span></li>
+                    <li class="student-affair"><a href="javascript:void(0)"  title="学生事务">学生事务</a><span><b>02</b><font>学生事务</font><i class="png"></i></span></li>
 
-                    <li class="student-score"><a href="javascript:void(0)" target="_blank" title="学生成绩">学生成绩</a><span><b>03</b><font>学生成绩</font><i class="png"></i></span></li>
-
+                    <li class="student-score"><a href="javascript:void(0)"  title="学生成绩">学生成绩</a><span><b>03</b><font>学生成绩</font><i class="png"></i></span></li>
                 </ul>
 
             </div>
@@ -208,13 +175,16 @@
 
                 </div>
 
+                <ul>
+                    <li class="apply-confirm"><a href="javascript:void(0)"  title="新增试卷">新增试卷</a><span><b>01</b><font>新增试卷</font><i class="png"></i></span></li>
+                    <li class="student-affair"><a href="javascript:void(0)"  title="选择试卷">选择试卷</a><span><b>02</b><font>选择试卷</font><i class="png"></i></span></li>
+                </ul>
+
 
             </div>
 
             <div id="questionManage" class="questionManage item">
-
                 <div class="show">
-
                     <div class="thumb">02</div>
 
                     <div class="small-thumb"></div>
@@ -226,12 +196,11 @@
                 </div>
 
                 <ul>
-                    <li class="add-question"><a href="javascript:void(0)" target="_blank" title="出题">出题</a><span><b>01</b><font>出题</font><i class="png"></i></span></li>
+                    <li class="add-question"><a href="javascript:void(0)"  title="出题">出题</a><span><b>01</b><font>出题</font><i class="png"></i></span></li>
 
-                    <li class="alter-question"><a href="javascript:void(0)" target="_blank" title="改题">改题</a><span><b>02</b><font>改题</font><i class="png"></i></span></li>
+                    <li class="alter-question"><a href="javascript:void(0)" title="改题">改题</a><span><b>02</b><font>改题</font><i class="png"></i></span></li>
 
-                    <li class="import-question"><a href="javascript:void(0)" target="_blank" title="导题">导题</a><span><b>03</b><font>导题</font><i class="png"></i></span></li>
-
+                    <li class="import-question"><a href="javascript:void(0)" title="导题">导题</a><span><b>03</b><font>导题</font><i class="png"></i></span></li>
                 </ul>
 
             </div>
@@ -293,8 +262,44 @@
 
     </div><!-- #julyingGridMenu -->
 
+    <div style="display: none" id="hiddenBtn"></div>
+
 
 
     <%@include file="/WEB-INF/flowerBg.txt"%>
+
+
+    <script type="text/javascript">
+        $(function ($) {
+
+            $('.item li').on('click',function(){
+                function getModLit(){
+                    var css = new MODALit({
+                        el: '#hiddenBtn',
+                        width: 'large',
+                        footer: false,
+                        transition: 'zoom',
+                        content:'<p style="text-align: center;font-size:40px" class="fa fa-spinner fa-pulse"></i></p>',
+                    /*    position:'bottom'*/
+                    });
+                    css.modal.id = "modalCss";
+
+
+                    $('#modalCss [data-modal-btn=dismiss]').one('click',function(){
+                        $('#modalCss').remove();
+                    });
+
+                    return '#modalCss .content';
+                }
+
+                 var selector=getModLit();
+
+                load(selector,$(this).attr('data-src'));
+
+                $('#hiddenBtn').click();
+            });
+        })
+    </script>
+
 </body>
 </html>

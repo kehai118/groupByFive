@@ -73,23 +73,16 @@ div,td{ word-wrap: break-word;}
 .gridMenu .selectExam{ background:#92c469;}
 .gridMenu .selectExam .close{ background: url(/others/forExamHome/images/close.png) center center no-repeat #92c469;}
 .gridMenu .selectExam .small-thumb{ background:url(/others/forExamHome/images/ico-8.png) 0 -600px no-repeat;}
- 
-.gridMenu .selectExam .qq-weibo{ top:0; left:100px;}
-.gridMenu .selectExam .qq-weibo a{ background:url(/others/forExamHome/images/gridmenu-child.jpg); }
-.gridMenu .selectExam .blog-works{ top:-100px; left:0; }
-.gridMenu .selectExam .blog-works a{ background:url(/others/forExamHome/images/gridmenu-child.jpg) -100px 0; }
+
+.gridMenu .selectExam .start-exam{ top:0; left:100px;}
+.gridMenu .selectExam .start-exam a{ background:url(/others/forExamHome/images/startExam.png) center center no-repeat;background-size: 60% ;}
 
 .gridMenu .examHistory{ background:#d77075;}
 .gridMenu .examHistory .close{ background: url(/others/forExamHome/images/close.png) center center no-repeat #d77075;}
 .gridMenu .examHistory .small-thumb{ background:url(/others/forExamHome/images/ico-8.png) 0 -750px no-repeat;}
 
-.gridMenu .examHistory .travel-photography{ top:-100px; left:0;}
-.gridMenu .examHistory .travel-photography a{ background:url(/others/forExamHome/images/gridmenu-child.jpg) 0 -100px;}
-.gridMenu .examHistory .website-front-end{ top:0; left:100px;}
-.gridMenu .examHistory .website-front-end a{ background:url(/others/forExamHome/images/gridmenu-child.jpg) -100px -100px;}
-.gridMenu .examHistory .mobile-terminal{top:100px; left:100px;}
-.gridMenu .examHistory .mobile-terminal a{ background:url(/others/forExamHome/images/gridmenu-child.jpg) -200px -100px;}
-
+.gridMenu .examHistory .history-exam{ top:-100px; left:0;}
+.gridMenu .examHistory .history-exam a{ background:url(/others/forExamHome/images/historyExam.png)  center center no-repeat;background-size: 60% ;}
 .gridMenu .contact-me-body{ background: none;}
 .gridMenu .contact-me-body .show{}
 .gridMenu .business-card{ position:relative; font-family: Verdana, Geneva, sans-serif; font-size:16px; padding: 45px 0 10px 10px; width:400px; background:url(/others/forExamHome/images/ico-8.png) 0 -200px no-repeat;}
@@ -117,6 +110,8 @@ div,td{ word-wrap: break-word;}
 
 .gridMenu .studentManage .apply-confirm{ top:-100px; left:0;}
 .gridMenu .studentManage .apply-confirm a{ background:url(/others/forExamHome/images/apply-confirm.png) center center no-repeat;background-size: 60% ;}
+
+
 .gridMenu .studentManage .student-affair{ top:0; left:100px;}
 .gridMenu .studentManage .student-affair a{ background:url(/others/forExamHome/images/studentAffair.png) center center  no-repeat;background-size: 60%}
 .gridMenu .studentManage .student-score{top:100px; left:100px;}

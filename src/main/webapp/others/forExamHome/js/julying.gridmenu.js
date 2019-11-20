@@ -147,7 +147,7 @@ julying.gridMenu = {
 				});
 				
 				var $body = $('div.'+ $thisItem.attr('id') +'-body' ) ;
-				if( $body.size() > 0 ){
+				if( $body.length > 0 ){
 					$thisItem.animate({ top : 0 , left : cellInfo.width },'slow');						
 					var itemBody = {};
 					itemBody.options = { initPosX : parseInt($thisItem.css('left')) , initPosY : parseInt($thisItem.css('top')), piecesX : 16 , piecesY : 25 , mode : 'show'};				 
