@@ -1,13 +1,13 @@
 package com.second.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class PageController {
-    @RequestMapping("/index.jsp")
-    public String toIndex(){
-        return "/index.jsp";
+@RequestMapping("/exam")
+public class Exam {
+    @RequestMapping("/home")
+    public String examHome(){
+        return "/exam/examHome.jsp";
     }
 }
