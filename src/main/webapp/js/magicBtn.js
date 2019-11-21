@@ -69,7 +69,7 @@ var debug = false;
             var settings = $.extend({
 
                 // These are the defaults.
-                loadingText: 'Send...',
+                loadingText: '加载中...',
 
                 //Icon options
                 loadingIcon: true,

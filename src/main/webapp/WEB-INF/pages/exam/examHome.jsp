@@ -9,11 +9,9 @@
 <html>
 <head>
     <title>examHome</title>
-
     <%@include file="/WEB-INF/commonRel.jsp"%>
 </head>
 <body>
-
     <link href="/others/forExamHome/css/main.css" rel="stylesheet" media="all" />
 
     <script src="/others/forExamHome/js/fun.base.js" type="text/javascript"></script>
@@ -132,7 +130,7 @@
                 </div>
 
                 <ul>
-                    <li class="history-exam"><a href="javascript:void(0)" title="考试历史">考试历史</a><span><b>01</b><font>考试历史</font><i class="png"></i></span></li>
+                    <li class="history-exam" data-src="/exam/examHistory"><a href="javascript:void(0)" title="考试历史">考试历史</a><span><b>01</b><font>考试历史</font><i class="png"></i></span></li>
                 </ul>
 
             </div>
@@ -274,12 +272,13 @@
 
             $('.item li').on('click',function(){
                 function getModLit(){
+                    $('#modalCss').remove();
                     var css = new MODALit({
                         el: '#hiddenBtn',
                         width: 'large',
                         footer: false,
                         transition: 'zoom',
-                        content:'<p style="text-align: center;font-size:40px" class="fa fa-spinner fa-pulse"></i></p>',
+                        content:'<p style="text-align: center;font-size:40px"><i class="fa fa-spinner fa-pulse"></i></p>',
                     /*    position:'bottom'*/
                     });
                     css.modal.id = "modalCss";
@@ -287,12 +286,18 @@
 
                     $('#modalCss [data-modal-btn=dismiss]').one('click',function(){
                         $('#modalCss').remove();
+                        window.location.href='/exam/index';
+                    });
+
+                    $('.modalit[aria-hidden=false]').one('click',function(){
+                        window.location.href='/exam/index';
                     });
 
                     return '#modalCss .content';
                 }
 
                  var selector=getModLit();
+
 
                 load(selector,$(this).attr('data-src'));
 

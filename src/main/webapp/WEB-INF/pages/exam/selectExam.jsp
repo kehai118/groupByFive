@@ -118,9 +118,10 @@
              * 初始化插件
              */
             $myselect.goSelectInput({
-                height: 30,
-                width: 250
+                height: 40,
+                width: 300
             });
+
         })
 
 
