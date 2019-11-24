@@ -21,12 +21,13 @@
 <link rel="stylesheet" href="/css/magicBtn.css">
 
 <%--动态旋转--%>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<%--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">--%>
 
 <%--AngularJS --%>
 <script type="text/javascript"  src="/js/table/angular.min.js"></script>
 
-
+<%--时钟 显示当前时间--%>
+<script type="text/javascript" src="/js/analogClock.js"></script>
 
 <%--全局函数--%>
 <script type="text/javascript" src="/js/all-purpose.js" charset="UTF-8"></script>

@@ -103,4 +103,8 @@ public class Exam {
         return "/exam/checkHistoryExam.jsp";
     }
 
+    @RequestMapping("addQuestion")
+    public String addQuestion(){
+        return "/exam/addQuestion.jsp";
+    }
 }

@@ -55,6 +55,7 @@
 <div id="header">
   <h1>sc1907-19.11.22月考</h1><br>
   <h3>姓名:lbb  成绩:79  总分:120</h3>
+  <h3>考试时间:2019.11.22</h3>
 </div>
 <!--//end #header//-->
 <div id="centerColumn" class="clearfix">
@@ -86,6 +87,7 @@
   </div>
   <div class="test_content_nr">
     <ul>
+
 
       <li id="qu_0_0">  <%--题目index--%>
         <div class="test_content_nr_tt">
@@ -363,7 +365,17 @@
       $('#rightColumn').html($(this).find('.dpn').text());
    },function () {
       $('#rightColumn').html("");
-   })
+   });
+
+   AnalogClock("clock", {
+       // 文本颜色
+       foreColor: "#000",
+
+       // 时钟的宽度
+       width: 200,
+
+       // 时钟的背景颜色
+       bgColor: "#eee"});
 </script>
 </body>
 </html>

@@ -175,7 +175,7 @@
 
                 <ul>
                     <li class="apply-confirm"><a href="javascript:void(0)"  title="新增试卷">新增试卷</a><span><b>01</b><font>新增试卷</font><i class="png"></i></span></li>
-                    <li class="student-affair"><a href="javascript:void(0)"  title="选择试卷">选择试卷</a><span><b>02</b><font>选择试卷</font><i class="png"></i></span></li>
+                    <li class="student-affair"><a href="javascript:void(0)"  title="选择试卷">使用试卷</a><span><b>02</b><font>选择试卷</font><i class="png"></i></span></li>
                 </ul>
 
 
@@ -194,11 +194,8 @@
                 </div>
 
                 <ul>
-                    <li class="add-question"><a href="javascript:void(0)"  title="出题">出题</a><span><b>01</b><font>出题</font><i class="png"></i></span></li>
-
-                    <li class="alter-question"><a href="javascript:void(0)" title="改题">改题</a><span><b>02</b><font>改题</font><i class="png"></i></span></li>
-
-                    <li class="import-question"><a href="javascript:void(0)" title="导题">导题</a><span><b>03</b><font>导题</font><i class="png"></i></span></li>
+                    <li class="add-question" data-src="/exam/addQuestion"><a href="/exam/addQuestion"  title="出题">出题</a><span><b>01</b><font>题库管理</font><i class="png"></i></span></li>
+                    <li class="import-question"><a href="javascript:void(0)" title="导题">导题</a><span><b>02</b><font>从文件中导题</font><i class="png"></i></span></li>
                 </ul>
 
             </div>
@@ -305,6 +302,7 @@
             });
         })
     </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">">
 
 </body>
 </html>

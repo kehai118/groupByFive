@@ -130,5 +130,5 @@ div,td{ word-wrap: break-word;}
 .gridMenu .questionManage .add-question a{ background:url(/others/forExamHome/images/add-question.png) center center no-repeat;background-size: 60% ;}
 .gridMenu .questionManage .alter-question{ top:0; left:100px;}
 .gridMenu .questionManage .alter-question a{ background:url(/others/forExamHome/images/alter-question.png) center center  no-repeat;background-size: 60%}
-.gridMenu .questionManage .import-question{top:100px; left:100px;}
+.gridMenu .questionManage .import-question{top:0px; left:100px;}
 .gridMenu .questionManage .import-question a{ background:url(/others/forExamHome/images/import-question.png) center center  no-repeat;background-size: 60%}
