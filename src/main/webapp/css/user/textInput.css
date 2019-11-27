@@ -1,0 +1,202 @@
+@charset "utf-8";
+
+#registerForm{
+    position: relative;
+    margin-top: 5%;
+}
+
+#loginForm{
+    position: relative;
+    margin-top:10%
+}
+
+#registerTip,#loginTip{
+    font-size: 2em;
+    font-family: "华文新魏";
+    margin-bottom:0.3em;
+    display: block;
+    width: 100%;
+    background-color: #E8F0FE;
+    color: #34A8CF;
+    border-radius: 20%;
+}
+
+#inLoginToRegister{
+    margin-left: -200px;
+    margin-top:20px;
+    font-family: 楷体;
+}
+
+#inRegisterToLogin{
+    margin-left: 200px;
+    margin-top:20px;
+    font-family: 楷体;
+}
+
+#loginTip{
+    margin-bottom: 1em;
+}
+
+.submitInput{
+    background-color: #34A8CF;
+    color: white;
+    border-radius: 20%;
+    font-size: 1.8em;
+    width: 30%;
+    outline: none;
+    font-family: 华文新魏;
+}
+#submitInput:active{
+    box-shadow: 0 0  10px 0 #ccc;
+}
+
+.sipt {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 80%;
+  height: -webkit-calc(3em + 2px);
+  height: calc(3em + 2px);
+  margin: 0 0 1em;
+  padding: 1em;
+  border: 1px solid #cccccc;
+  border-radius: 1.5em;
+  background: #fff;
+  resize: none;
+  outline: none;
+  text-align: center;
+}
+ .sipt[required]:focus {
+  border-color: #00bafa;
+}
+ .sipt[required]:focus +span+label[placeholder]:before {
+  color: #00bafa;
+}
+ .sipt[required]:focus +span+ label[placeholder]:before,
+ .sipt[required]:valid +span+label[placeholder]:before {
+  -webkit-transition-duration: .2s;
+  transition-duration: .2s;
+  -webkit-transform: translate(0, -1.5em) scale(0.9, 0.9);
+  -ms-transform: translate(0, -1.5em) scale(0.9, 0.9);
+  transform: translate(0, -1.5em) scale(0.9, 0.9);
+}
+ .sipt[required]:invalid+span+label[placeholder][alt]:before {
+  content: attr(alt);
+}
+ .sipt[required]+span+label[placeholder] {
+     display: block;
+     pointer-events: none;
+     line-height: 2.3em;
+     margin-top: -webkit-calc(-3em - 2px);
+     margin-top: calc(-3em - 2px);
+  /*margin-bottom: -webkit-calc((3em - 1em) + 2px);*/
+  /*margin-bottom: calc((3em - 1em) + 2px);*/
+     margin-bottom: 1em;
+}
+ .sipt[required]+span+label[placeholder]:before {
+      content: attr(placeholder);
+      display: inline-block;
+      margin: 0 -webkit-calc(1em + 2px);
+      margin: 0 calc(1em + 2px);
+      padding: 0 2px;
+      color: #898989;
+      white-space: nowrap;
+      -webkit-transition: 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+      background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+      background-image: linear-gradient(to bottom, #ffffff, #ffffff);
+      -webkit-background-size: 100% 5px;
+      background-size: 100% 5px;
+      background-repeat: no-repeat;
+      background-position: center;
+}
+
+ #userHead{
+     width:60px;
+     height: 60px;
+     margin: 20px auto;
+     border-radius: 50%;
+ }
+
+ /*注册弹窗*/
+ #modalCss.backdrop {
+     background-color: rgba(200,200,200,0.7);
+ }
+
+#modalCss>.dialog {
+    border-radius: .4em;
+    text-align: center;
+}
+
+#modalCss .content p {
+    margin: .8em 0;
+}
+
+#modalCss footer {
+    padding: 0;
+}
+
+#modalCss footer button {
+    width: 50%;
+    height: 4%;
+    float: left;
+    margin: 0;
+    border-radius: 0 0 0 .4em;
+    background-color: #5675c7;
+    color: #fff;
+}
+
+#modalCss footer button[data-modal-btn="action"] {
+    float: left;
+    background-color: #ff7878;
+    border-radius: 0 0 .4em 0;
+}
+
+
+
+ /*图片上传*/
+
+.con4 {
+    width: 40%;
+    height: auto;
+    overflow: hidden;
+    margin: 20px auto;
+    color: #FFFFFF;
+}
+
+.con4 .btn {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #d8b49c;
+    display: block;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.upload {
+    float: left;
+    position: relative;
+}
+
+.upload_pic {
+    display: block;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    border-radius: 5px;
+}
+
+#cvs {
+    border: 1px solid #000;
+    margin:2px auto;
+}
+
+.dpn{
+    display: none;
+}

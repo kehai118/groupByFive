@@ -27,8 +27,8 @@ $(function ($) {
 
     //hover
     $('#show_tbody').on('mouseenter','tr',function () {
-        $("#v_question").html($(this).find('td').eq(2).html());
-        $('#v_score').html("("+$(this).find('td').eq(6).html()+")");
+        $("#v_question").html($(this).find('td').eq(3).html());
+        $('#v_score').html("("+$(this).find('td').eq(7).html()+")");
 
         $('#v_option').html(" ");
         $(this).find('select option').each(function () {
@@ -38,8 +38,8 @@ $(function ($) {
                 '</label> </li>';
             $('#v_option').append($(str));
         });
-        $('#v_answer').html('答案:'+$(this).find('td').eq(4).html());
-        $('#v_analyze').html('解析'+$(this).find('td').eq(5).html())
+        $('#v_answer').html('答案:'+$(this).find('td').eq(5).html());
+        $('#v_analyze').html('解析'+$(this).find('td').eq(6).html())
     });
 
     //搜索按键
@@ -55,7 +55,9 @@ $(function ($) {
     
     //删除按钮
     $('#tb').on('click', '.del', function () {
-        $(this).parents('tr').remove();
+        $tr= $(this).parents('tr');
+        $.get("/exam/addQuestionSubmit",{id:+$tr.find('td:eq(0)').html()});
+        $tr.remove();
     });
 
     $('#renyuan').on('hide.bs.modal',function() {
@@ -72,7 +74,8 @@ var addEnter = true,
     tdStr = '',
     trIndex,
     hasNullMes = false,
-    optionIndex='ABCDEFGHIGKLMNOPQRSTUVWXYZ';
+    optionIndex='ABCDEFGHIGKLMNOPQRSTUVWXYZ',
+    nowID=-1;
 
 function getTd(selector){
      var a=$(selector).val();
@@ -80,28 +83,50 @@ function getTd(selector){
      return '<td>'+a.trim()+'</td>';
 }
 
+function writeJson() {
+    json={};
+
+    json.type=$('#xztb .type').val();
+    json.kind=$('#xztb .kind').val();
+    json.question=$('#xztb .question').val();
+    json.answer= $('#xztb .answer').val();
+    json.analyze= $('#xztb .analyzing').val();
+    json.score=parseInt($('#xztb .score').val());
+    var opt="";
+    $('#xztb .select option').each(function () {
+        opt+=$(this).html()+"///////////////////end";
+    });
+
+    json.optionString=opt;
+    return json;
+}
+
 var methods = {
-    addHandle: function (the_index) {
+    addHandle: function () {
         hasNullMes = false;
         methods.checkMustMes();
         if (hasNullMes) {
             return;
          }
         if (addEnter) {
-            methods.checkRepeat();
-            if (noRepeat) {
-                methods.setStr();
-                $('#show_tbody').append('<tr>' + tdStr + '</tr>');
-                $('#renyuan').modal('hide');
-            }
+            methods.checkRepeat(function () {
+                $.get('/exam/addQuestionSubmit',writeJson(),function (data) {
+                    methods.setStr(data);
+                    $('#show_tbody').append('<tr>' + tdStr + '</tr>');
+                    $('#renyuan').modal('hide');
+                })
+            });
         }else{
-            methods.setStr();
-            $('#show_tbody tr').eq(trIndex).empty().append(tdStr);
-            $('#renyuan').modal('hide');
+            json=writeJson();
+            json.id=nowID;
+            $.get('/exam/addQuestionSubmit',writeJson(),function (data) {
+                methods.setStr(nowID);
+                $('#show_tbody tr').eq(trIndex).empty().append(tdStr);
+                $('#renyuan').modal('hide');
+            })
         } 
     },
     editHandle: function (the_index) {
-
         var tar = $('#show_tbody tr').eq(the_index);
         
         var nowConArr = [];
@@ -112,16 +137,18 @@ var methods = {
 
         $('#renyuan').modal('show');
 
-        $('#xztb .type').val(nowConArr[0]);
-        $('#xztb .kind').val(nowConArr[1]);
-        $('#xztb .question').val(nowConArr[2]);
-        $('#xztb .answer').val(nowConArr[4]);
-        $('#xztb .analyzing').val(nowConArr[5]);
-        $('#xztb .score').val(nowConArr[6]);
-        $('#xztb .select').html(nowConArr[3]);
+        $('#xztb .type').val(nowConArr[1]);
+        $('#xztb .kind').val(nowConArr[2]);
+        $('#xztb .question').val(nowConArr[3]);
+        $('#xztb .answer').val(nowConArr[5]);
+        $('#xztb .analyzing').val(nowConArr[6]);
+        $('#xztb .score').val(nowConArr[7]);
+        $('#xztb .select').html(nowConArr[4]);
+
+        nowID=tar.find("td:eq(0)").html();
     },
-    setStr: function () {
-        tdStr = '';
+    setStr: function (id) {
+        tdStr ='<td>'+id+'</td>';
         tdStr += getTd('#xztb .type');
         tdStr +=getTd('#xztb .kind');
         tdStr +=getTd('#xztb .question');
@@ -132,32 +159,34 @@ var methods = {
         tdStr +=getTd('#xztb .analyzing');
         tdStr +=getTd('#xztb .score');
         tdStr+='<td><a href="#" class="edit">编辑</a> <a href="#" class="del">删除</a></td>';
-
     },
     seach: function () {
         var a = $('#show_tbody tr');
         var search = $('#Ktext').val().trim();
         var type=$('#Ktype').val().trim();
         if (search=='') {
-            /*bootbox.alert({
-                title: "来自火星的提示",
-                message: "搜索内容不能为空",
-                closeButton:false
-            })*/
             return;
         }
+        var url="/exam/addQuestion?";
 
         switch (type) {
             case '全部':
+                url+="type="+search+"&kind="+search+"&question="+search+"&scroe="+search;
                 break;
             case '题型':
+                url+="type="+search;
                 break;
             case  '题类':
+                url+="kind="+search;
+                break;
+            case '题干':
+                url+="question="+search;
                 break;
             case '分值':
+                url+="score="+search;
                 break;
         }
-        //todo  ajax请求
+        window.location.href=url;
     },
     resectList: function () {
         $('#show_tbody tr').show();
@@ -235,21 +264,32 @@ var methods = {
 
         $('#xztb .answer').val(str);
     },
-    checkRepeat: function () {
+    checkRepeat: function (success) {
         var newQuestion = $('#xztb .question').val().trim();
 
         for (var i = 0; i<$('#show_tbody tr:not(".has_case")').length;i++) {
             var a=$('#show_tbody tr:not(".has_case")').eq(i).find('td').eq(2).val().trim();
             if(a==newQuestion){
                 noRepeat = false;
+                break;
+            } 
+        }
+        
+        $.get('/exam/searchQuestion',{question:newQuestion},function (e) {
+            if(e!='-1') {
+                noRepeat=false;
+            }
+            if(!noRepeat){
                 bootbox.alert({
                     title: "error",
                     message: "重复的题名!!!",
                     closeButton: false
                 });
-                return;
-            } 
-        }
-        noRepeat = true; 
+                noRepeat=false;
+            }else {
+                noRepeat=true;
+                success();
+            }
+        })
     }
 };

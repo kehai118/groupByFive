@@ -366,16 +366,6 @@
    },function () {
       $('#rightColumn').html("");
    });
-
-   AnalogClock("clock", {
-       // 文本颜色
-       foreColor: "#000",
-
-       // 时钟的宽度
-       width: 200,
-
-       // 时钟的背景颜色
-       bgColor: "#eee"});
 </script>
 </body>
 </html>

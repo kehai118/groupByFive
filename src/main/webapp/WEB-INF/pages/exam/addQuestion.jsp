@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kehai
@@ -5,7 +6,7 @@
   Time: 15:34
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -20,7 +21,7 @@
 <link href="/css/exam/doExam/iconfont.css" rel="stylesheet" type="text/css" />
 <link href="/css/exam/doExam/test.css" rel="stylesheet" type="text/css" />
 
-    <link rel="stylesheet" type="text/css" href="/css/exam/addQuestion/q_styles.css" />
+<link rel="stylesheet" type="text/css" href="/css/exam/addQuestion/q_styles.css" />
 <link rel="stylesheet" type="text/css" href="/css/exam/addQuestion/style.css"/>
 <link rel="stylesheet" type="text/css" href="/css/exam/addQuestion/bootstrap.min.css" />
 <script src="/js/exam/addQuestion/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
@@ -61,6 +62,7 @@
     html>body #footer {
         margin-left: 0px;
         margin-right: 0px;
+        width:100%;
     }
 
     .option{
@@ -75,6 +77,7 @@
         <h1 id="h1">新增试题</h1>
         <div id='clock'></div>
     </div>
+
     <!-- End Header -->
     <!-- Begin Faux Columns -->
     <div id="faux">
@@ -88,10 +91,12 @@
                             <div class="input-group mb-3">
                                 <span>搜索：</span>
                                 <select id="Ktype">
-                                    <option value="0">全部</option>
-                                    <option value="1">题型</option>
-                                    <option value="2">题类</option>
-                                    <option value="3">分值</option>
+                                    <option value="全部">全部</option>
+                                    <option value="题型">题型</option>
+                                    <option value="题类">题类</option>
+                                    <option value="题干">题干</option>
+                                    <option value="分值">分值</option>
+                                </select>
                                 <input id="Ktext" type="text" class="form-control" placeholder="不能为空">
                             </div>
                         </div>
@@ -113,7 +118,7 @@
                         <div class="modal-dialog modal-lg modal_position">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">添加</h4>
+                                    <h4 class="modal-title">添加/修改</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
@@ -161,7 +166,6 @@
                                                 <select class="form-control select_down score"
                                                         style="font-size: 13px; color: #666;">
                                                     <option selected value="1分">1分</option>
-                                                    <option value="1.5分">1.5分</option>
                                                     <option value="2分">2分</option>
                                                     <option value="3分">5分</option>
                                                     <option value="4分">10分</option>
@@ -196,6 +200,7 @@
                 <table id="tb" class="table">
                     <thead>
                     <tr>
+                        <th>题号</th>
                         <th>题型</th>
                         <th>题类</th>
                         <th>题名</th>
@@ -207,25 +212,27 @@
                     </tr>
                     </thead>
                     <tbody id="show_tbody">
-                    <tr>
-                        <td>单选题</td>
-                        <td>CSS</td>
-                        <td>下列哪些不属于img标签的属性</td>
-                        <td><select class="form-control select_down" style="font-size: 13px; color: #666;">
-                            <option>A.alt</option>
-                            <option>B.title</option>
-                            <option>C.src</option>
-                            <option>D.href</option>
-                        </select>
-                        </td>
-                        <td>D</td>
-                        <td>无</td>
-                        <td>1分</td>
-                        <td>
-                            <a href="#" class="edit">编辑</a>
-                            <a href="#" class="del">删除</a>
-                        </td>
-                    </tr>
+                    <c:forEach var="ques" items="${question}">
+                        <tr>
+                            <td>${ques.id}</td>
+                            <td>${ques.type}</td>
+                            <td>${ques.kind}</td>
+                            <td>${ques.question}</td>
+                            <td><select class="form-control select_down" style="font-size: 13px; color: #666;">
+                                <c:forEach items="${ques.options}" var="opt">
+                                    <option>${opt.optionIndex}.${opt.descript}</option>
+                                </c:forEach>
+                            </select>
+                            </td>
+                            <td>${ques.answer}</td>
+                            <td>${ques.analyze}</td>
+                            <td>${ques.score}分</td>
+                            <td>
+                                <a href="#" class="edit">编辑</a>
+                                <a href="#" class="del">删除</a>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
             </div>

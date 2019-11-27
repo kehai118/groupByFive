@@ -64,13 +64,20 @@
         }
     </style>
     <div id="selectExam">
-        <h2>请选择要进行的考试考试</h2>
-        <p><select>
-            <c:forEach var="item" items="${list}">
-                <option>${item}</option>
-            </c:forEach>
-        </select></p>
-        <button class="magicBtn round">确定</button>
+        <c:if test="${not empty list}">
+        <h2>请选择要进行的考试</h2>
+            <p><select>
+                <c:forEach var="item" items="${list}">
+                    <option>${item}</option>
+                </c:forEach>
+            </select></p>
+            <button class="magicBtn round">确定</button>
+        </c:if>
+        <c:if test="${empty list}">
+            <h2>
+                当前无将要进行的考试
+            </h2>
+        </c:if>
     </div>
 
     <script type="text/javascript">

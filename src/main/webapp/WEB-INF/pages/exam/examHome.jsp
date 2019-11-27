@@ -41,7 +41,7 @@
 
                     <div class="small-thumb"></div>
 
-                    <div class="title">快报</div>
+                    <div class="title">准考证</div>
 
                     <div class="close"></div>
 
@@ -130,7 +130,7 @@
                 </div>
 
                 <ul>
-                    <li class="history-exam" data-src="/exam/examHistory"><a href="javascript:void(0)" title="考试历史">考试历史</a><span><b>01</b><font>考试历史</font><i class="png"></i></span></li>
+                    <li class="history-exam"><a href="/exam/examHistory" title="考试历史">考试历史</a><span><b>01</b><font>考试历史</font><i class="png"></i></span></li>
                 </ul>
 
             </div>
@@ -174,8 +174,8 @@
                 </div>
 
                 <ul>
-                    <li class="apply-confirm"><a href="javascript:void(0)"  title="新增试卷">新增试卷</a><span><b>01</b><font>新增试卷</font><i class="png"></i></span></li>
-                    <li class="student-affair"><a href="javascript:void(0)"  title="选择试卷">使用试卷</a><span><b>02</b><font>选择试卷</font><i class="png"></i></span></li>
+                    <li class="text-paper"><a href="/exam/addPaper"  title="新增试卷">新增试卷</a><span><b>01</b><font>新增试卷</font><i class="png"></i></span></li>
+                    <li class="new-exam"><a href="/exam/newTest"  title="新建考试">新建考试</a><span><b>02</b><font>新建考试</font><i class="png"></i></span></li>
                 </ul>
 
 

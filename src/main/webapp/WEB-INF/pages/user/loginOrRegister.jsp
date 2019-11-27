@@ -19,6 +19,8 @@
 </head>
 
 <body>
+<link rel="stylesheet" type="text/css" href="/css/exam/addQuestion/bootstrap.min.css" />
+<script src="/js/exam/addQuestion/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -52,23 +54,24 @@
         <div id="login_form" class="form">
             <form class="register-form">
                 <input type="text" placeholder="用户名" id="r_user_name"/>
-                <input type="password" placeholder="密码" id="r_password" />
-                <input type="text" placeholder="电子邮件" id="r_emial"/>
+                <input type="password" placeholder="密码" id="r_password"  MAXLENGTH="24"/>
+                <input  type='text' id="realname" class="sipt" placeholder="真实姓名" >
+                <input type='text' id="sex" class="sipt" MAXLENGTH="1" placeholder="性别" >
+                <input type="text" placeholder="手机号" id="r_phone"/>
+                <input type='text' id="address"  placeholder="联系地址" >
                 <button id="create">创建账户</button>
                 <p class="message">已经有了一个账户? <a href="#">立刻登录</a></p>
             </form>
             <form class="login-form">
                 <input type="text" placeholder="用户名" id="user_name"/>
                 <input type="password" placeholder="密码" id="password"/>
-                <button id="login">登　录</button>
+                <button id="login" >登　录</button>
                 <p class="message">还没有账户? <a href="#">立刻创建</a></p>
             </form>
         </div>
     </div>
 
     <!-- //content -->
-
-
 
 
 <!-- copyright -->
@@ -108,7 +111,7 @@
     })
 </script>
 
-
+<div id="hiddenBtn" style="display: none"></div>
 </body>
 
 

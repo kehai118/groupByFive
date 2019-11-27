@@ -122,9 +122,16 @@ div,td{ word-wrap: break-word;}
 .gridMenu .paperManage .close{ background: url(/others/forExamHome/images/close.png) center center no-repeat #bca123;}
 .gridMenu .paperManage .small-thumb{ background:url(/others/forExamHome/images/ico-8.png) 0 -650px no-repeat;}
 
+.gridMenu .paperManage .text-paper{ top:0px; left:-100px;}
+.gridMenu .paperManage .text-paper a{ background:url(/others/forExamHome/images/text-paper.png) center center no-repeat;background-size: 60% ;}
+.gridMenu .paperManage .new-exam{ top:-100px; left:0;}
+.gridMenu .paperManage .new-exam a{ background:url(/others/forExamHome/images/new-exam.png) center center no-repeat;background-size: 60% ;}
+
 .gridMenu .questionManage{  background:#dfa;}
 .gridMenu .questionManage .close{ background: url(/others/forExamHome/images/close.png) center center no-repeat #dfa;}
 .gridMenu .questionManage .small-thumb{ background:url(/others/forExamHome/images/ico-8.png) 0 -650px no-repeat;}
+
+
 
 .gridMenu .questionManage .add-question{ top:-100px; left:0;}
 .gridMenu .questionManage .add-question a{ background:url(/others/forExamHome/images/add-question.png) center center no-repeat;background-size: 60% ;}

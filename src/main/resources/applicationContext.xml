@@ -20,10 +20,10 @@
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close" >
         <!--${url}为引用jdbc.properties中的url配置-->
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
-        <property name="username" value="leibinbin"></property>
-        <property name="password" value="1234"></property>
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
         <!--初始连接大小-->
         <property name="initialSize" value="5"></property>
         <!--最小连接数,连接池至少需要保持的连接数-->
