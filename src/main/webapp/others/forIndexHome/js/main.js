@@ -57,24 +57,17 @@ var dateReadableText = 'Upcoming date';
         dateReadableText = $('.site-config').attr('data-date-readable');        
         $('.timeout-day').text(dateReadableText);
     }
-$('.clock-countdown').downCount({
-    date: $('.site-config').attr('data-date'),
-    offset: +10
-}, function () {
-    //callback here if finished
-    //alert('YES, done!');
-    var zerodayText = 'An upcoming date';
-    if($('.site-config').attr('data-zeroday-text') && ($('.site-config').attr('data-zeroday-text') != '')){
-        $('.timeout-day').text('');
-        zerodayText = $('.site-config').attr('data-zeroday-text'); 
-    }
-    $('.timeout-day').text(zerodayText);
-});
+    var date = new Date();
+    date.setHours(date.getHours()+2);
 
-/* Second */
-$(function() {
-	$("#second-knob").knob();
-});
+    $('.clock-countdown').downCount({
+        date: date,
+    });
+
+    /* Second */
+    $(function() {
+        $("#second-knob").knob();
+    });
 
 
 /* 2. Background for page / section */

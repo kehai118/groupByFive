@@ -1,6 +1,10 @@
 package com.second.service;
 
 import com.sun.istack.internal.NotNull;
+import java.util.List;
+
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.RequestContext;
 import org.springframework.stereotype.Service;
 import sun.misc.BASE64Decoder;
 
@@ -9,12 +13,12 @@ import javax.xml.bind.DatatypeConverter;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
+
 @Service
 public class FileService {
+
     public boolean GenerateImage(@NotNull String imgStr,@NotNull String imgPath,@NotNull String imgName) {
         File headPath = new File(imgPath);//获取文件夹路径
-        System.out.println(imgPath);
-        System.out.println(headPath.exists());
         if (!headPath.exists()) {//判断文件夹是否创建，没有创建则创建新文件夹
             headPath.mkdirs();
         }

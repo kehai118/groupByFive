@@ -23,6 +23,7 @@
 <link rel="stylesheet" type="text/css" href="/css/exam/addQuestion/bootstrap.min.css" />
 <script src="/js/exam/addQuestion/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/js/exam/addQuestion/bootbox.min.js"></script>
+<%@include file="/Menu.jsp"%>
 <style>
     #header h1{
         text-align: center;

@@ -92,19 +92,20 @@
     var ajaxmockjax = 1; //是否启用虚拟Ajax的请求响 0 不启用  1 启用
     //默认账号密码
 
-    var truelogin = "kbcxy";
+    var truelogin = "kehai";
     var truepwd = "1";
 
-    var CodeVal = 0;
+    var CodeVal=0;
     Code();
 
     function Code() {
         if(canGetCookie == 1) {
-            createCode("AdminCode");
             var AdminCode = getCookieValue("AdminCode");
+            CodeVal=createCode(AdminCode);
             showCheck(AdminCode);
         } else {
-            showCheck(createCode(""));
+            CodeVal=createCode("");
+            showCheck(CodeVal);
         }
     }
 
@@ -159,8 +160,8 @@
     layui.use('layer', function() {
         //非空验证
         $('input[type="button"]').click(function() {
-            var login = $('input[name="login"]').val();
-            var pwd = $('input[name="pwd"]').val();
+            var login = $('input[name="login"]').val().trim();
+            var pwd = $('input[name="pwd"]').val().trim();
             var code = $('input[name="code"]').val();
             if(login == '') {
                 ErroAlert('请输入您的账号');
@@ -168,18 +169,19 @@
                 ErroAlert('请输入密码');
             } else if(code == '' || code.length != 4) {
                 ErroAlert('输入验证码');
-            } else {
+            }else if(CodeVal.trim().toUpperCase() != code.trim().toUpperCase()){
+                ErroAlert('验证码错误');
+            }
+            else {
                 //登陆
                 var JsonData = {
-                    login: login,
-                    pwd: pwd,
-                    code: code
+                    name: login,
+                    password: pwd,
+                    type:1
                 };
-                //$.post("url",JsonData,function(data) {
-                console.log(111);
-                alert("登录成功");
-                //window.location.href = 'http://127.0.0.1:8020/jQueryLogin/index.html?__hbt=1567408106021';
-                //});
+                $.post("/admin/doLogin",JsonData,function(data) {
+                    window.location.href = '/index.jsp';
+                });
             }
         })
     });

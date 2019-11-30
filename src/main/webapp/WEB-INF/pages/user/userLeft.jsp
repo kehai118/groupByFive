@@ -112,7 +112,7 @@
         </div>
         <div style="overflow: hidden;">
             <a href="javascript:void(0)" id="updateAdmin">修改信息</a>
-            <a href="javascript:void(0)">更换背景</a>
+            <a href="/admin/logout">退出登录</a>
         </div>
     </div>
 

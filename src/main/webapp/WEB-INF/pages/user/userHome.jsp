@@ -250,5 +250,6 @@
             })
         });
     </script>
+    <%@include file="/Menu.jsp"%>
 </body>
 </html>

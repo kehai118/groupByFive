@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.second.mapper.TUserRelationMapper">
+  <resultMap id="BaseResultMap" type="com.second.pojo.TUserRelation">
+    <result column="USERS" jdbcType="DECIMAL" property="users" />
+    <result column="TARGET" jdbcType="DECIMAL" property="target" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+  </resultMap>
+  <insert id="insert" parameterType="com.second.pojo.TUserRelation">
+    insert into T_USER_RELATION (USERS, TARGET, STATUS
+      )
+    values (#{users,jdbcType=DECIMAL}, #{target,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.second.pojo.TUserRelation">
+    insert into T_USER_RELATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="users != null">
+        USERS,
+      </if>
+      <if test="target != null">
+        TARGET,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="users != null">
+        #{users,jdbcType=DECIMAL},
+      </if>
+      <if test="target != null">
+        #{target,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <sql id="Base_Column_List">
+    USER_ID, TARGET_ID, STATUS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_USER_RELATION
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from T_USER_RELATION
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="com.second.pojo.TUserRelation">
+    update T_USER_RELATION
+    <set>
+      <if test="targetId != null">
+        TARGET_ID = #{targetId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.second.pojo.TUserRelation">
+    update T_USER_RELATION
+    set TARGET_ID = #{targetId,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+   select * from T_USER_RELATION
+  </select>
+  <insert id="inserts">
+    insert into T_USER_RELATION (USERS, TARGET, STATUS )
+    values (#{users,jdbcType=DECIMAL}, #{target,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL})
+  </insert>
+</mapper>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.second.mapper.note.TArticleDao">
+  <resultMap id="BaseResultMap" type="com.second.pojo.note.TArticle">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="AUTHOR_ID" jdbcType="DECIMAL" property="authorId" />
+    <result column="TITLE" jdbcType="VARCHAR" property="title" />
+    <result column="ISSHARE" jdbcType="DECIMAL" property="isshare" />
+    <result column="PEEKS" jdbcType="DECIMAL" property="peeks" />
+    <result column="LIKES" jdbcType="DECIMAL" property="likes" />
+    <result column="DISLIKES" jdbcType="DECIMAL" property="dislikes" />
+    <result column="CREATE_AT" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="LAST_UPDATE_TIME" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+      <result column="ARTICLE" jdbcType="VARCHAR" property="article" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AUTHOR_ID, TITLE, ISSHARE, PEEKS, LIKES, DISLIKES, CREATE_AT, LAST_UPDATE_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    ARTICLE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Blob_Column_List" />
+    from SENPRO.T_ARTICLE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <!--查询所有笔记-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT * from SENPRO.T_ARTICLE
+  </select>
+
+<!--  模糊查询-->
+    <select id="selectLike" resultType="com.second.pojo.note.TArticle">
+        select * from T_ARTICLE
+        <where>
+            <if test="title!=null and title!=''">
+                <bind name="titleLike" value="'%'+title+'%'"/>
+                 title like #{titleLike}
+            </if>
+        </where>
+    </select>
+
+  <!--删除笔记-->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from SENPRO.T_ARTICLE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+
+  <insert id="insert" parameterType="com.second.pojo.note.TArticle">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+        select SEQ_ARTICLE.nextval from dual
+    </selectKey>
+    insert into SENPRO.T_ARTICLE (AUTHOR_ID, TITLE, ISSHARE, 
+      PEEKS, LIKES, DISLIKES, 
+      CREATE_AT, LAST_UPDATE_TIME, ARTICLE
+      )
+    values (#{authorId,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, #{isshare,jdbcType=DECIMAL}, 
+      #{peeks,jdbcType=DECIMAL}, #{likes,jdbcType=DECIMAL}, #{dislikes,jdbcType=DECIMAL}, 
+      #{createAt,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{article,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.second.pojo.note.TArticle">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Long">
+      select SEQ_ARTICLE.nextval from dual
+    </selectKey>
+    insert into SENPRO.T_ARTICLE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+    id,
+      <if test="authorId != null">
+        AUTHOR_ID,
+      </if>
+      <if test="title != null">
+        TITLE,
+      </if>
+      <if test="isshare != null">
+        ISSHARE,
+      </if>
+      <if test="peeks != null">
+        PEEKS,
+      </if>
+      <if test="likes != null">
+        LIKES,
+      </if>
+      <if test="dislikes != null">
+        DISLIKES,
+      </if>
+      <if test="createAt != null">
+        CREATE_AT,
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME,
+      </if>
+      <if test="article != null">
+        ARTICLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+    #{id},
+      <if test="authorId != null">
+        #{authorId,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isshare != null">
+        #{isshare,jdbcType=DECIMAL},
+      </if>
+      <if test="peeks != null">
+        #{peeks,jdbcType=DECIMAL},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=DECIMAL},
+      </if>
+      <if test="dislikes != null">
+        #{dislikes,jdbcType=DECIMAL},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="article != null">
+        #{article,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <!--新增文章-->
+  <insert id="insertArticle" parameterType="com.second.pojo.note.TArticle">
+    insert into SENPRO.T_ARTICLE(id, author_id, title, article) values (SENPRO.SEQ_ARTICLE.nextval,#{authorId},#{title},#{article,jdbcType=CLOB})
+  </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.second.pojo.note.TArticle">
+    update SENPRO.T_ARTICLE
+    <set>
+      <if test="authorId != null">
+        AUTHOR_ID = #{authorId,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null">
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="isshare != null">
+        ISSHARE = #{isshare,jdbcType=DECIMAL},
+      </if>
+      <if test="peeks != null">
+        PEEKS = #{peeks,jdbcType=DECIMAL},
+      </if>
+      <if test="likes != null">
+        LIKES = #{likes,jdbcType=DECIMAL},
+      </if>
+      <if test="dislikes != null">
+        DISLIKES = #{dislikes,jdbcType=DECIMAL},
+      </if>
+      <if test="createAt != null">
+        CREATE_AT = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateTime != null">
+        LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="article != null">
+        ARTICLE = #{article,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithCLOBs" parameterType="com.second.pojo.note.TArticle">
+    update SENPRO.T_ARTICLE
+    set AUTHOR_ID = #{authorId,jdbcType=DECIMAL},
+      TITLE = #{title,jdbcType=VARCHAR},
+      ISSHARE = #{isshare,jdbcType=DECIMAL},
+      PEEKS = #{peeks,jdbcType=DECIMAL},
+      LIKES = #{likes,jdbcType=DECIMAL},
+      DISLIKES = #{dislikes,jdbcType=DECIMAL},
+      CREATE_AT = #{createAt,jdbcType=TIMESTAMP},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      ARTICLE = #{article,jdbcType=CLOB}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.second.pojo.note.TArticle">
+    update SENPRO.T_ARTICLE
+    set AUTHOR_ID = #{authorId,jdbcType=DECIMAL},
+      TITLE = #{title,jdbcType=VARCHAR},
+      ISSHARE = #{isshare,jdbcType=DECIMAL},
+      PEEKS = #{peeks,jdbcType=DECIMAL},
+      LIKES = #{likes,jdbcType=DECIMAL},
+      DISLIKES = #{dislikes,jdbcType=DECIMAL},
+      CREATE_AT = #{createAt,jdbcType=TIMESTAMP},
+      LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <!--动态修改笔记-->
+    <update id="updateArticle">
+        update
+    </update>
+</mapper>

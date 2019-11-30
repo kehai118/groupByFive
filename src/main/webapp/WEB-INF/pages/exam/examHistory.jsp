@@ -144,7 +144,7 @@
             //ajax或分页后需要执行update`
 
             $('tbody').on('dblclick','tr',function () {
-                window.location.href="/exam/checkExam?id="+$(this).attr('data-src');
+                window.location.href="/exam/checkExam?examId="+$(this).attr('data-src');
             });
             
         })
@@ -178,5 +178,6 @@
         }
     </style>
 </div>
+<%@include file="/Menu.jsp"%>
 </body>
 </html>

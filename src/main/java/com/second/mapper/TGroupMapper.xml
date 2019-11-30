@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.second.mapper.TGroupMapper">
+  <resultMap id="BaseResultMap" type="com.second.pojo.TGroup">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="DESCRIPT" jdbcType="VARCHAR" property="descript" />
+    <result column="CREATE_BY_ID" jdbcType="DECIMAL" property="createById" />
+    <result column="CREATE_AT" jdbcType="TIMESTAMP" property="createAt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, DESCRIPT, CREATE_BY_ID, CREATE_AT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_GROUP
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from T_GROUP
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.second.pojo.TGroup">
+    insert into T_GROUP (ID, NAME, DESCRIPT, 
+      CREATE_BY_ID, CREATE_AT)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{descript,jdbcType=VARCHAR}, 
+      #{createById,jdbcType=DECIMAL}, #{createAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.second.pojo.TGroup">
+    insert into T_GROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="descript != null">
+        DESCRIPT,
+      </if>
+      <if test="createById != null">
+        CREATE_BY_ID,
+      </if>
+      <if test="createAt != null">
+        CREATE_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="createById != null">
+        #{createById,jdbcType=DECIMAL},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.second.pojo.TGroup">
+    update T_GROUP
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="descript != null">
+        DESCRIPT = #{descript,jdbcType=VARCHAR},
+      </if>
+      <if test="createById != null">
+        CREATE_BY_ID = #{createById,jdbcType=DECIMAL},
+      </if>
+      <if test="createAt != null">
+        CREATE_AT = #{createAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.second.pojo.TGroup">
+    update T_GROUP
+    set NAME = #{name,jdbcType=VARCHAR},
+      DESCRIPT = #{descript,jdbcType=VARCHAR},
+      CREATE_BY_ID = #{createById,jdbcType=DECIMAL},
+      CREATE_AT = #{createAt,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

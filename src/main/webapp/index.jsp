@@ -12,7 +12,7 @@ http://themeforest.net/licenses
     <meta charset="utf-8">
 
     <!-- Page Title Here -->
-    <title>Bientot - Landing page Coming Soon responsive template</title>
+    <title>在线考试系统</title>
 
     <!-- Page Description Here -->
     <meta name="description" content="A responsive coming soon template, un template HTML pour une page en cours de construction">
@@ -81,34 +81,33 @@ http://themeforest.net/licenses
 <nav class="quick-link count-6 nav-left">
     <ul id="qmenu">
         <li data-menuanchor="home">
-            <a href="#home" class=""><i class="icon ion ion-home"></i>
+            <a href="/admin/index" class=""><i class="icon ion ion-home"></i>
             </a>
-            <span class="title">Home page</span>
+            <span class="title">个人主页</span>
         </li>
         <li data-menuanchor="when">
-            <a href="#when" class=""><i class="icon ion ion-android-alarm"></i>
+            <a href="/exam/index" class=""><i class="icon ion ion-android-alarm"></i>
             </a>
-            <span class="title">When</span>
+            <span class="title">考试</span>
         </li>
         <li data-menuanchor="register">
-            <a href="#register"><i class="icon ion ion-compose"></i>
+            <a href="/note/toEdit"><i class="icon ion-document-text ion"></i>
             </a>
-            <span class="title">Stay in touch</span>
+            <span class="title">笔记</span>
         </li>
         <li data-menuanchor="about-us">
-            <a href="#about-us"><i class="icon ion ion-android-information"></i>
-            </a>
-            <span class="title">About Us</span>
+            <a href="/com/index"><i class="icon ion ion-chatboxes"></i></a>
+            <span class="title">聊天</span>
         </li>
         <li data-menuanchor="contact">
-            <a href="#contact"><i class="icon ion ion-android-call"></i>
+            <a href="/bolg/index"><i class="icon ion-beer ion"></i>
             </a>
-            <span class="title">Contact</span>
+            <span class="title">论坛</span>
         </li>
         <li data-menuanchor="contact">
-            <a href="#contact/message"><i class="icon ion ion-email"></i>
+            <a href="/admin/managerLogin"><i class="icon social-foursquare ion"></i>
             </a>
-            <span class="title">Write to us</span>
+            <span class="title">管理员登录</span>
         </li>
     </ul>
 </nav>
@@ -172,8 +171,8 @@ http://themeforest.net/licenses
         <footer class="p-footer p-scrolldown">
             <a href="#when">
                 <div class="arrow-d">
-                    <div class="before">Tell&nbsp;me</div>
-                    <div class="after">When</div>
+                    <div class="before">主页</div>
+                    <div class="after">考试</div>
                     <div class="circle"></div>
                 </div>
             </a>
@@ -186,27 +185,27 @@ http://themeforest.net/licenses
         <section class="content">
             <div class="clock clock-countdown">
                 <div class="site-config"
-                     data-date="12/24/2030 12:00:00"
+                     data-date="29/11/2019 8:00:00"
                      data-date-timezone="+0"
                 ></div>
                 <header class="header">
-                    Coming <strong>soon</strong>
+                    考试 <strong>到计时</strong>
                 </header>
                 <div class="elem-left">
-                    <div class="digit hours">00</div>
-                    <div class="text">hrs</div>
+                    <div class="digit minutes">00</div>
+                    <div class="text">分</div>
                 </div>
                 <div class="elem-center">
                     <!-- Optional text at top or image logo -->
                     <!--<span class="text top">here in</span>-->
                     <!-- Optional logo at top -->
                     <span class="text top"><img class="img" alt="Logo" src="/others/forIndexHome/img/logo_large.png"></span>
-                    <div class="digit days">000</div>
-                    <div class="text">days</div>
+                    <div class="digit hours">000</div>
+                    <div class="text">时间</div>
                 </div>
                 <div class=" elem-right">
-                    <div class="digit minutes">00</div>
-                    <div class="text">min</div>
+                    <div class="digit seconds">00</div>
+                    <div class="text">秒</div>
                 </div>
 
                 <!-- second knob here -->
@@ -230,8 +229,8 @@ http://themeforest.net/licenses
         <footer class="p-footer p-scrolldown">
             <a href="#register">
                 <div class="arrow-d">
-                    <div class="before">Stay&nbsp;in</div>
-                    <div class="after">Touch</div>
+                    <div class="before">考试</div>
+                    <div class="after">笔记</div>
                     <div class="circle"></div>
                 </div>
             </a>
@@ -243,29 +242,29 @@ http://themeforest.net/licenses
     <div class="section page-register page page-cent " id="s-register">
         <section class="content">
             <header class="p-title">
-                <h3>Register <i class="ion ion-compose"></i></h3>
+                <h3>笔记 <i class="ion ion-compose"></i></h3>
             </header>
             <div>
                 <form id="mail-subscription" class="form magic send_email_form" method="get" action="ajaxserver/serverfile.php">
-                    <p class="invite center">Please, write your email below to stay in touch with us :</p>
+                    <p class="invite center">记录每时每刻的学习：</p>
                     <div class="fields clearfix">
                         <div class="input">
-                            <label for="reg-email">Email </label>
-                            <input id="reg-email" class="email_f"  name="email" type="email" required placeholder="your@email.address" data-validation-type="email"></div>
+                            <label for="reg-email">笔记 </label>
+                            <input id="reg-email" class="email_f"  name="email" type="text" required placeholder="e=mc2" data-validation-type="text"></div>
                         <div class="buttons">
-                            <button id="submit-email" class="button email_b" name="submit_email">Ok</button>
+                            <button id="submit-email" class="button email_b" name="submit_email" onclick="window.location.href='/note/edit'">保存</button>
                         </div>
                     </div>
 
-                    <p class="email-ok invisible"><strong>Thank you</strong> for your subscription. We will inform you.</p>
+                    <p class="email-ok invisible"><strong>笔记</strong>保存成功.</p>
                 </form>
             </div>
         </section>
         <footer class="p-footer p-scrolldown">
             <a href="#about-us">
                 <div class="arrow-d">
-                    <div class="before">About</div>
-                    <div class="after">Lorem</div>
+                    <div class="before">笔记</div>
+                    <div class="after">交友</div>
                     <div class="circle"></div>
                 </div>
             </a>
@@ -277,14 +276,14 @@ http://themeforest.net/licenses
     <div class="section page-about page page-cent" id="s-about-us">
         <section class="content">
             <header class="p-title">
-                <h3>About Us<i class="ion ion-android-information">
+                <h3>交友<i class="ion ion-android-information">
                 </i>
                 </h3>
-                <h2>We <span class="bold">make</span> only <span class="bold">beautiful</span> things</h2>
+                <h2>在线<span class="bold">交友</span><span class="bold">学习</span></h2>
             </header>
             <article class="text">
-                <p>Lorem ipsum <strong>magicum </strong>dolor sit amet, consectetur adipiscing elit. Maecenas a sem ultrices neque vehicula fermentum a sit amet nulla.</p>
-                <p>Aenean ultricies odio at erat facilisis tincidunt. Fusce tempor auctor justo, nec facilisis quam vehicula vel. Aenean non mattis purus, eget lobortis odio. </p>
+                <p>一个人学习效率低，这里不会那里不会？</p>
+                <p>在线求助好友！！！</p>
             </article>
         </section>
         <footer class="p-footer p-scrolldown">

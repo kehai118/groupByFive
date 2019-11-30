@@ -69,6 +69,7 @@
         background-color: inherit;
     }
 </style>
+<%@include file="/Menu.jsp"%>
 
 <!-- Begin Wrapper -->
 <div id="wrapper">

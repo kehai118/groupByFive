@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -29,6 +30,11 @@ public class TestPaperServiceImpl implements BaseService<TTestPaper>{
         TTestPaper paper = BaseService.super.selectByPrimaryKey(id);
         paper.setQuestions(getQuestion(paper.getQuestionsId()));
         return paper;
+    }
+
+    public String getAnswers(Long id){
+        final TTestPaper paper = selectByPrimaryKey(id);
+        return paper.getQuestions().stream().map(e -> e.getAnswer()).collect(Collectors.joining(",", "(", ")"));
     }
 
     @Override

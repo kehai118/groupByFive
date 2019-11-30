@@ -41,11 +41,18 @@
     <!--设置启用shiro注解-->
     <aop:config proxy-target-class="true"></aop:config>
 
-    <!--配置shiro 权限拦截器-->
+   <!-- 配置shiro 权限拦截器-->
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"></property>
     </bean>
-
+  <!--  <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/admin/**"/>
+            <bean class="com.second.filter.LoginFilter"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+-->
 
 
     <!--配置springmvc异常处理机制-->

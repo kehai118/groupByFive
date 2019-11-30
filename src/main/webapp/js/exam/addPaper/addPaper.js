@@ -147,25 +147,33 @@ var methods = {
         var search = $('#Ktext').val().trim();
         var type = $('#Ktype').val().trim();
         if (search == '') {
-            /*bootbox.alert({
-                title: "来自火星的提示",
-                message: "搜索内容不能为空",
-                closeButton:false
-            })*/
-            return;
-        }
+            var a = $('#show_tbody tr');
+            var search = $('#Ktext').val().trim();
+            var type = $('#Ktype').val().trim();
+            if (search == '') {
+                return;
+            }
+            var url = "/exam/loadQuestion?";
 
-        switch (type) {
-            case '全部':
-                break;
-            case '题型':
-                break;
-            case  '题类':
-                break;
-            case '分值':
-                break;
+            switch (type) {
+                case '全部':
+                    url += "type=" + search + "&kind=" + search + "&question=" + search + "&scroe=" + search;
+                    break;
+                case '题型':
+                    url += "type=" + search;
+                    break;
+                case  '题类':
+                    url += "kind=" + search;
+                    break;
+                case '题干':
+                    url += "question=" + search;
+                    break;
+                case '分值':
+                    url += "score=" + search;
+                    break;
+            }
+            load(".yui-b",url)
         }
-        //todo  ajax请求
     },
     checkSubmit: function () {
         if(question_checkBox.length+question_radio.length==0){

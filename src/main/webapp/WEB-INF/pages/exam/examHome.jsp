@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kehai
@@ -5,7 +6,7 @@
   Time: 1:50
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
     <title>examHome</title>
@@ -24,7 +25,7 @@
 
     <%--头像--%>
     <style>
-        .gridMenu .quick-body .me{ float:left; width: 200px; height:200px; background:url(/others/forExamHome/images/me.png) 10px 5px no-repeat;}
+        .gridMenu .quick-body .me{ float:left; width: 200px; height:200px; background:url(${user.head}) 10px 5px no-repeat;}
     </style>
 
     <div id="julyingGridMenu" class="gridMenu">
@@ -32,7 +33,7 @@
         <h1 class="logos"><a href="/index.jsp">examProjectByGroupFive</a></h1>
 
         <div class="position">
-
+            <c:if test="${empty teacher}">
             <div id="quick" class="quick item">
 
                 <div class="show">
@@ -48,9 +49,6 @@
                 </div>
 
             </div>
-
-
-
             <div class="quick-body body">
 
                 <div class="show">
@@ -59,32 +57,12 @@
 
                     <div class="about">
 
-                        <strong class="name">user.name</strong> user.group
+                        <strong class="name">${user.name}</strong> sc1907
                         <p>最近考试:</p>
                         <p>考试成绩：</p>
-                        <p>将要进行的考试：</p>
-                        <p>倒计时：</p>
-
                     </div><div class="clear"></div>
-
-
-
                     <div class="introduction">
-
-                        <%--考试历史表--%>
-                        <%--<p>这个网站是我的个人主页，里面都为原创内容。</p>
-
-                        <p>我经常会分享一些好资源</p>
-
-                        <p>欢迎和我一起讨论编程技术。
-
-                            <a class="qq" target="_blank" href="javascript:void(0)" title="网站源码">QQ</a>
-
-                            <a class="weibo tencent" target="_blank" href="javascript:void(0)" title="js特效">JS特效</a>
-
-                        </p>--%>
-
-
+                    <p>${user.about}</p>
                     </div>
 
                 </div><!-- .show-->
@@ -92,9 +70,8 @@
                 <div class="bg" child-num="20"></div>
 
             </div><!-- .about-me-body-->
-
-
-
+            </c:if>
+        <c:if test="${empty teacher}">
             <div id="selectExam" class="selectExam item">
 
                 <div class="show">
@@ -113,8 +90,8 @@
                     <li class="start-exam" data-src="/exam/selectExam"><a href="javascript:void(0)"  title="选择考试">选择考试</a><span><b>01</b><font>选择考试</font><i class="png"></i></span></li>
                 </ul>
             </div>
-
-
+        </c:if>
+        <c:if test="${empty teacher}">
             <div id="examHistory" class="examHistory item">
 
                 <div class="show">
@@ -134,12 +111,13 @@
                 </ul>
 
             </div>
-
+        </c:if>
+        <c:if test="${not empty teacher}">
             <div id="studentManage" class="studentManage item">
 
                 <div class="show">
 
-                    <div class="thumb">05</div>
+                    <div class="thumb">01</div>
 
                     <div class="small-thumb"></div>
 
@@ -158,7 +136,8 @@
                 </ul>
 
             </div>
-
+        </c:if>
+        <c:if test="${not empty teacher}">
             <div id="paperManage" class="paperManage item">
 
                 <div class="show">
@@ -180,27 +159,27 @@
 
 
             </div>
-
+        </c:if>
+        <c:if test="${not empty teacher}">
             <div id="questionManage" class="questionManage item">
-                <div class="show">
-                    <div class="thumb">02</div>
+            <div class="show">
+                <div class="thumb">03</div>
 
-                    <div class="small-thumb"></div>
+                <div class="small-thumb"></div>
 
-                    <div class="title">题库管理</div>
+                <div class="title">题库管理</div>
 
-                    <div class="close"></div>
-
-                </div>
-
-                <ul>
-                    <li class="add-question" data-src="/exam/addQuestion"><a href="/exam/addQuestion"  title="出题">出题</a><span><b>01</b><font>题库管理</font><i class="png"></i></span></li>
-                    <li class="import-question"><a href="javascript:void(0)" title="导题">导题</a><span><b>02</b><font>从文件中导题</font><i class="png"></i></span></li>
-                </ul>
+                <div class="close"></div>
 
             </div>
 
+            <ul>
+                <li class="add-question" data-src="/exam/addQuestion"><a href="/exam/addQuestion"  title="出题">出题</a><span><b>01</b><font>题库管理</font><i class="png"></i></span></li>
+                <li class="import-question"><a href="javascript:void(0)" title="导题">导题</a><span><b>02</b><font>从文件中导题</font><i class="png"></i></span></li>
+            </ul>
 
+        </div>
+        </c:if>
             <div id="contact-me" class="contact-me item">
 
                 <div class="show">
@@ -217,46 +196,43 @@
 
             </div>
 
-            <div class="contact-me-body body">
+        <%--<div class="contact-me-body body">
 
-                <div class="show">
+            <div class="show">
 
-                    <div class="business-card">
+                <div class="business-card">
 
-                        &lt;card&gt;
+                    &lt;card&gt;
 
-                        <ul>
+                    <ul>
 
-                            <li>&lt;name&gt;<strong>慕浟佳</strong><span>&lt;/name&gt;</span></li>
+                        <li>&lt;name&gt;<strong>慕浟佳</strong><span>&lt;/name&gt;</span></li>
 
-                            <li>&lt;qq&gt;	<strong name="replace" val="1415575933">loading...</strong><span>&lt;/qq&gt;</span></li>
+                        <li>&lt;qq&gt;	<strong name="replace" val="1415575933">loading...</strong><span>&lt;/qq&gt;</span></li>
 
-                            <li>&lt;email&gt;<strong name="replace" val="1415575933@qq.com">loading...</strong><span>&lt;/email&gt;</span></li>
+                        <li>&lt;email&gt;<strong name="replace" val="1415575933@qq.com">loading...</strong><span>&lt;/email&gt;</span></li>
 
-                            <li>&lt;link&gt;<strong>ayoujia.com</strong><span>&lt;/link&gt;</span></li>
+                        <li>&lt;link&gt;<strong>ayoujia.com</strong><span>&lt;/link&gt;</span></li>
 
-                        </ul>
+                    </ul>
 
-                        &lt;/card&gt;
+                    &lt;/card&gt;
 
-                        <div class="expand"></div>
-
-                    </div>
+                    <div class="expand"></div>
 
                 </div>
 
-                <div class="bg" child-num="0"></div>
-
             </div>
 
+            <div class="bg" child-num="0"></div>
 
+        </div>--%>
 
-            <div class="cells"><li class="cell"></li></div>
+         <div class="cells"><li class="cell"></li></div>
 
         </div>
 
     </div><!-- #julyingGridMenu -->
-
     <div style="display: none" id="hiddenBtn"></div>
 
 
@@ -301,8 +277,8 @@
                 $('#hiddenBtn').click();
             });
         })
+
     </script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">">
-
 </body>
 </html>

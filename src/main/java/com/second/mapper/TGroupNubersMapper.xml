@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.second.mapper.TGroupNubersMapper">
+  <resultMap id="BaseResultMap" type="com.second.pojo.TGroupNubers">
+    <id column="GROUP_ID" jdbcType="DECIMAL" property="groupId" />
+    <id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="ROLE" jdbcType="VARCHAR" property="role" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    GROUP_ID, USER_ID, ROLE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.second.pojo.TGroupNubersKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_GROUP_NUBERS
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+      and USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.second.pojo.TGroupNubersKey">
+    delete from T_GROUP_NUBERS
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+      and USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.second.pojo.TGroupNubers">
+    insert into T_GROUP_NUBERS (GROUP_ID, USER_ID, ROLE
+      )
+    values (#{groupId,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL}, #{role,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.second.pojo.TGroupNubers">
+    insert into T_GROUP_NUBERS
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="role != null">
+        ROLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="role != null">
+        #{role,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.second.pojo.TGroupNubers">
+    update T_GROUP_NUBERS
+    <set>
+      <if test="role != null">
+        ROLE = #{role,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+      and USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.second.pojo.TGroupNubers">
+    update T_GROUP_NUBERS
+    set ROLE = #{role,jdbcType=VARCHAR}
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+      and USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+
+</mapper>

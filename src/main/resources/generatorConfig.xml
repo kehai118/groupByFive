@@ -84,10 +84,11 @@
 			   enableSelectByExample="false" selectByExampleQueryId="false">
 			<columnOverride column="ID" javaType="java.lang.Long"></columnOverride>
 		</table>-->
-		<table tableName="t_user_other" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+
+		<table tableName="T_group_nubers" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false">
-			<columnOverride column="ID" javaType="java.lang.Long"></columnOverride>
 		</table>
+
 		<!--<table tableName="t_question_option" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 			   enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 	</context>

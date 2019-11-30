@@ -42,7 +42,7 @@
         <!--注入安全管理器-->
         <property name="securityManager" ref="securityManager"></property>
         <!--配置登录页面地址,如果用户没有登录，则会默认跳转到该地址-->
-        <property name="loginUrl" value="/admin/toLogin"></property>
+        <property name="loginUrl" value="/admin/index"></property>
         <!--配置过滤器，即过滤规则 anon 为不需要登录的请求 authc为需要权限验证-->
         <property name="filterChainDefinitions">
             <value>
@@ -51,11 +51,10 @@
                 /images/**=anon
                 /fonts/**=anon
                 /others/**=anon
-                /admin/toLogin=anon
-                /admin/login =anon
-                /admin/toAdd=anon
-                /admin/add=anon
-                /**=anon
+                /admin/**=anon
+                /index.jsp=anon
+                /Menu.jsp=anon
+                /**=authc
             </value>
         </property>
     </bean>

@@ -1,0 +1,46 @@
+//拖动文件
+
+			var dropbox = $("body")[0];
+
+
+			dropbox.addEventListener("dragenter", function(e){
+				e.stopPropagation();
+				e.preventDefault();
+			}, false);
+
+			dropbox.addEventListener("dragover", function(e){
+				e.stopPropagation();
+				e.preventDefault();
+			}, false);
+
+			dropbox.addEventListener("drop", function(e){
+				e.stopPropagation();
+				e.preventDefault();
+
+				var files = e.dataTransfer.files;
+
+				//检测是否是拖拽文件到页面的操作 
+				if(files.length == 0) {
+					//commons.alert("请选择文件！", "warning");
+				} else {
+					for(var i=0;i<files.length;i++){
+						if(files){
+							//实例化FileReader()对象    readAsText   readAsBineryString  readAsArrayBuffer
+							var reader=new FileReader();
+							reader.readAsArrayBuffer(files[i]);
+						}
+
+						//获取文件的名称
+						if (!/image\/\w+/.test(file.type)) {
+							//alert("只能选择图片");
+							return false;
+						}
+						//加载完成选择的文件后
+						reader.οnlοad=function(){
+							var base64Code=this.result;
+						var html=$('#qq-chat-text').html();
+							$('#qq-chat-text').html(html+'<img src="'+base64Code+'">',true);
+						}
+					}
+				}
+			}, false);

@@ -64,20 +64,21 @@
         }
     </style>
     <div id="selectExam">
-        <c:if test="${not empty list}">
+        <c:if test="${not empty exam}">
         <h2>请选择要进行的考试</h2>
             <p><select>
-                <c:forEach var="item" items="${list}">
-                    <option>${item}</option>
+                <c:forEach var="item" items="${exam}">
+                    <option value="${item.id}" totalScore="${item.tTestPaper.totalScore}" testTime="${item.testTime}" totalQuestion="${item.totalQuestion}"}>${item.tTestPaper.name}</option>
                 </c:forEach>
             </select></p>
             <button class="magicBtn round">确定</button>
         </c:if>
-        <c:if test="${empty list}">
+        <c:if test="${empty exam}">
             <h2>
                 当前无将要进行的考试
             </h2>
         </c:if>
+        <div id="st_hidden" style="display: none"></div>
     </div>
 
     <script type="text/javascript">
@@ -93,7 +94,7 @@
             var selectBtn = 'true';
 
             var css = new MODALit({
-                el: '#selectExam button',
+                el:'#st_hidden',
                 width: 'large',
                 cancel:{
                     label:'确定',
@@ -103,7 +104,7 @@
                             loadingIcon: true,
                         });
                         setTimeout(function () {
-                            window.location.href='/exam/doExam?index='+$('#selectExam select').val();
+                            window.location.href='/exam/doExam?id='+$('#selectExam select').val();
                         },1000)
                     }
                 },
@@ -113,7 +114,7 @@
                 },
                 transition: 'flip',
                 content:'<h2>考前须知<h2>' +
-                    '<p>本次考试共n道题目，总分100分。答题时间为120分钟。</p>' +
+                    '<p>本次考试共<span id="pt_que"></span>道题目，总分<span id="pt_score"></span>分。答题时间为<span id="pt_time"></span>分钟。</p>' +
                     '<p>答题过程中不准离开考试界面，否则视为自动提交。</p>' +
                     '<p>考试即将开始，请自觉遵守考场纪律，确定进入考试；取消返回选择</p>',
             });
@@ -128,6 +129,13 @@
                 height: 40,
                 width: 300
             });
+            
+            $('#selectExam button').on('click',function () {
+                $('#pt_score').html($("option:selected").attr('totalScore'));
+                $('#pt_time').html($("option:selected").attr('testTime'));
+                $('#pt_que').html($("option:selected").attr('totalQuestion'));
+                $('#st_hidden').click();
+            })
 
         })
     </script>

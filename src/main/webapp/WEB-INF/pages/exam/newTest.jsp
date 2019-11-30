@@ -15,6 +15,7 @@
     <%@include file="/WEB-INF/commonRel.jsp"%>
 </head>
 <body>
+<%@include file="/Menu.jsp"%>
     <link rel="stylesheet" type="text/css" href="/css/exam/newTest/styles.css" />
 
     <link href="/css/exam/doExam/iconfont.css" rel="stylesheet" type="text/css" />
@@ -73,25 +74,26 @@
         <div id="leftcolumn">
             <div style="height: 30vh; display: table;text-align: center;padding:10vh 0">
                 <c:if test="${not empty paper}">
-                <form id="formToCreate">
+                <div id="formToCreate">
                 <p>选择试卷:&emsp;<select class="sp">
                     <c:forEach items="${paper}" var="it">
                         <option value="${it.id}">${it.name}</option>
                     </c:forEach>
                 </select>
                 </p>
-                    <p>选择使用班级:&emsp;<select name="sc">
+                    <%--<p>选择使用班级:&emsp;<select name="sc">
                         <c:forEach items="${paper}" var="it">
                             <option value="${it.id}">${it.name}</option>
                         </c:forEach>
-                    </select></p>
+                    </select></p>--%>
                     <p>考试时间(分钟):</p>
-                    <p><input type="number"  min="30" max="160" class="st"></p>
+                    <jsp:useBean id="now" class="java.util.Date" scope="page"/>
+                    <p><input type="number"  min="30" max="160" class="st" value="120"></p>
                     <p>开考时间:</p>
-                    <p style="text-align: left;font-size: 0.75em;">日期：<input  type="date" pattern="yyyy-MM-dd" value="2019-11-27" class="sd1"></p>
-                    <p style="text-align: left;font-size: 0.75em">时间：<input  type="time" pattern="HH:mm" value="08:22" min="09:00" max="18:00" class="sd2"></p>
+                    <p style="text-align: left;font-size: 0.75em;">日期：<input  type="date" pattern="yyyy-MM-dd"  class="sd1"></p>
+                    <p style="text-align: left;font-size: 0.75em">时间：<input  type="time" pattern="HH:mm" min="09:00" max="18:00" class="sd2"></p>
                     <button class="magicBtn round" style="margin: 0 auto;" id="submitBtn">确定</button>
-                    </form>
+                    </div>
                 </c:if>
                 <c:if test="${empty paper}">
                     <p style="text-align: center;font-size: 16px;">还未有可用试卷</p>
@@ -100,288 +102,12 @@
             <div style="height: 35vh;position: relative;">
                 <div id="clock"></div>
             </div>
+            <div id="hiddenBtn" style="display: none;"></div>
 
         </div>
         <!-- End Left Column -->
         <!-- Begin Right Column -->
         <div id="rightcolumn" style="overflow-y:scroll;overflow-x:hidden; ">
-            <div class="content">
-                <div class="test_content">
-                    <div class="test_content_title">
-                        <h2>单选题</h2>
-                        <p>
-                            <span>共</span><i class="content_lit">60</i><span>题，</span><span>合计</span><i class="content_fs">60</i><span>分</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="test_content_nr">
-                    <ul>
-                        <li id="qu_0_0">  <%--题目index--%>
-                            <div class="test_content_nr_tt">
-                                <i>1</i><span>(1分)</span><font>在生产管理信息系统中，下列操作步骤能正确将工单推进流程的是（  ）</font><b class="icon iconfont">&#xe881;</b>
-                            </div>
-
-                            <div class="test_content_nr_main">
-                                <ul>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="answer1"
-                                               id="0_answer_1_option_1" value="A" disabled
-                                        />
-
-
-                                        <label for="0_answer_1_option_1">
-                                            A.
-                                            <p class="ue" style="display: inline;">在工具栏中点击“workflow”标签</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="answer1"
-                                               id="0_answer_1_option_2" value="B" disabled
-                                        />
-
-
-                                        <label for="0_answer_1_option_2">
-                                            B.
-                                            <p class="ue" style="display: inline;">在缺陷单界面中点击“推进流程”按钮</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="answer1"
-                                               id="0_answer_1_option_3" value="C" checked
-                                        />
-
-
-                                        <label for="0_answer_1_option_3">
-                                            C.
-                                            <p class="ue right" style="display: inline;">在缺陷单界面中点击“提交”按钮</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="answer1"
-                                               id="0_answer_1_option_4" value="D" disabled
-                                        />
-
-
-                                        <label for="0_answer_1_option_4">
-                                            D.
-                                            <p class="ue" style="display: inline;">后台启动流程推进</p>
-                                        </label>
-
-                                        <label>
-                                            <p class="ue">答案：C</p>
-                                        </label>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-
-
-
-                        <li id="qu_0_59">
-                            <div class="test_content_nr_tt">
-                                <i>60</i><span>(1分)</span><font>工作完成后需要进行的操作，下列说法正确的是（  ）</font><b class="icon iconfont">&#xe881;</b>
-                            </div>
-
-                            <div class="test_content_nr_main">
-                                <ul>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="r_answer60"
-                                               id="0_answer_60_option_1" value="A"
-                                        />
-
-
-                                        <label for="0_answer_60_option_1">
-                                            A.
-                                            <p class="ue" style="display: inline;">工作完毕后交还操作工具，清理现场</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="r_answer60"
-                                               id="0_answer_60_option_2" value="B"
-                                        />
-
-
-                                        <label for="0_answer_60_option_2">
-                                            B.
-                                            <p class="ue" style="display: inline;">工作完毕后交还操作工具</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-                                        <input type="radio" class="radioOrCheck" name="r_answer60"
-                                               id="0_answer_60_option_3" value="C"
-                                        />
-                                        <label for="0_answer_60_option_3">
-                                            C.
-                                            <p class="ue" style="display: inline;">工作完毕后交还操作工具并无损坏，清理现场</p>
-                                        </label>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <div class="test_content">
-                    <div class="test_content_title">
-                        <h2>多选题</h2>
-                        <p>
-                            <span>共</span><i class="content_lit">30</i><span>题，</span><span>合计</span><i class="content_fs">30</i><span>分</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="test_content_nr">
-                    <ul>
-
-                        <li id="qu_1_0">
-                            <div class="test_content_nr_tt">
-                                <i>1</i><span>(1分)</span><font>以下属于南方电网员工职业操守中明文规定的有()</font><b class="icon iconfont">&#xe881;</b>
-                            </div>
-
-                            <div class="test_content_nr_main">
-                                <ul>
-                                    <li class="option">
-                                        <input type="checkbox" class="radioOrCheck" name="answer1"
-                                               id="1_answer_1_option_1" value="A" checked disabled
-                                        />
-
-                                        <label for="1_answer_1_option_1">
-                                            A.
-                                            <p class="ue error" style="display: inline;">热爱祖国、热爱南网、热爱岗位</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-
-                                        <input type="checkbox" class="radioOrCheck" name="answer1"
-                                               id="1_answer_1_option_2" value="B" checked disabled
-                                        />
-
-                                        <label for="1_answer_1_option_2">
-                                            B.
-                                            <p class="ue right" style="display: inline;">遵纪守法、忠于职守、令行禁止</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-                                        <input type="checkbox" class="radioOrCheck" name="answer1"
-                                               id="1_answer_1_option_3" value="C" disabled
-                                        />
-
-                                        <label for="1_answer_1_option_3">
-                                            C.
-                                            <p class="ue miss" style="display: inline;">客户至上、诚实守信、优质服务</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-
-                                        <input type="checkbox" class="radioOrCheck" name="answer1"
-                                               id="1_answer_1_option_4" value="D" disabled
-                                        />
-
-                                        <label for="1_answer_1_option_4">
-                                            D.
-                                            <p class="ue" style="display: inline;">公平竞争、互相监督、服从监管</p>
-                                        </label>
-
-                                        <label>
-                                            <p class="ue">答案：B、C</p>
-                                        </label>
-                                        <p class="dpn">解析:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-
-                        <li id="qu_1_29">
-                            <div class="test_content_nr_tt">
-                                <i>30</i><span>(1分)</span><font>以变压器容量计算基本电费的用户,其备用的变压器（含高压电动机）说法正确的是（  ）</font><b class="icon iconfont">&#xe881;</b>
-                            </div>
-
-                            <div class="test_content_nr_main">
-                                <ul>
-
-                                    <li class="option">
-
-
-                                        <input type="checkbox" class="radioOrCheck" name="c_answer30"
-                                               id="1_answer_30_option_1"
-                                        />
-
-                                        <label for="1_answer_30_option_1">
-                                            A.
-                                            <p class="ue" style="display: inline;">所有状态皆需缴纳基本电费</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-
-                                        <input type="checkbox" class="radioOrCheck" name="c_answer30"
-                                               id="1_answer_30_option_2"
-                                        />
-
-                                        <label for="1_answer_30_option_2">
-                                            B.
-                                            <p class="ue" style="display: inline;">所有状态皆不用缴纳基本电费</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-
-
-                                        <input type="checkbox" class="radioOrCheck" name="c_answer30"
-                                               id="1_answer_30_option_3"
-                                        />
-
-                                        <label for="1_answer_30_option_3">
-                                            C.
-                                            <p class="ue" style="display: inline;">属冷备用状态并经供电企业加封的，不用交基本电费，属热备用状态的或未经加封的，需缴纳基本电费</p>
-                                        </label>
-                                    </li>
-
-                                    <li class="option">
-                                        <input type="checkbox" class="radioOrCheck" name="c_answer30"
-                                               id="1_answer_30_option_4"
-                                        />
-
-                                        <label for="1_answer_30_option_4">
-                                            D.
-                                            <p class="ue" style="display: inline;">属冷备用状态并经供电企业加封的，需缴纳基本电费，属热备用状态的或未经加封的，不用交基本电费</p>
-                                        </label>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-            </div>
         </div>
         <!-- End Right Column -->
         <div class="clear"> </div>
@@ -403,6 +129,61 @@
                 width: 100,
                 // 时钟的背景颜色
                 bgColor: "#eee"
+            });
+
+
+            $('#submitBtn').click(function () {
+                if($('.sd1').val()=='' || $('.sd2').val()=='' || $('st').val()=='') return;
+
+                var tag=true;
+
+                var limit=$('.st').val();
+                var select=$('.sp').val();
+
+                if(limit.length==0 || limit<30 || limit>300) {
+                    tag = false;
+                    return false;
+                }
+                var time=new Date($('.sd1').val()).Format("yyyy-MM-dd")+" "+$('.sd2').val()+":00";
+
+
+
+                if(new Date(time).getTime() < new Date().getTime()){
+                     $("#modalCss").remove();
+                    var css=new MODALit({
+                        el:"#hiddenBtn",
+                        content:'<p style="font-size: 30px;text-align: center;font-family: 华文楷体;">考试日期小于当前时间</p>',
+                        footer:false,
+                        transition: 'slideUp'
+                    });
+                    css.modal.id = "modalCss";
+                    $('#hiddenBtn').click();
+                    tag=false;
+                    return;
+                }
+
+                if(tag)
+                 $.get('/exam/newTestSubmit',{
+                     examTime:time,
+                     testTime:limit,
+                     testPaperId:select
+                 },function (e) {
+                     if(e>0){
+                         var css=new MODALit({
+                             el:"#hiddenBtn",
+                             content:'<p style="font-size: 30px;text-align: center;font-family: 华文楷体;">创建考试'+e+'成功,请等待返回主页</p>',
+                             footer:false,
+                             transition: 'slideUp'
+                         });
+                         css.modal.id = "modalCss";
+                         $('#hiddenBtn').click();
+                         setTimeout(function () {
+                             window.location.href="/exam/index";
+                         },2000)
+                     }
+                 });
+
+                return false;
             });
 
         });
@@ -427,11 +208,35 @@
 
         setInterval(function () {
             $('#nowTime').html(new Date().Format("hh:mm:ss"))},500);
-        
-        $('#submitBtn').click(function () {
 
+        $('.sd1').val(new Date().Format("yyyy-MM-dd"));
+        $('.sd2').val(new Date().Format("hh:mm"));
+
+        function IsDate(num){
+            var regexp = /^([1][7-9][0-9][0-9]|[2][0][0-9][0-9])(\-)([0][1-9]|[1][0-2])(\-)([0-2][1-9]|[3][0-1])$/g;
+            /// 日期范围：1700/01/01 ----2099-01-01 　
+            return regexp.test(num);
+        }
+
+        function IsPhone(val){
+            var isPhone = /^([0-9]{3,4}-)?[0-9]{7,8}$/;//手机号码
+            var isMob= /^0?1[3|4|5|8][0-9]\d{8}$/;// 座机格式
+            if(isMob.test(val)||isPhone.test(val)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+        load($('#rightcolumn'),'/exam/loadPaper?id='+$('.sp').val().trim());
+
+        $('.sp').change(function () {
+            load($('#rightcolumn'),'/exam/loadPaper?id='+$('.sp').val().trim());
         });
 
     </script>
+
+
 </body>
 </html>

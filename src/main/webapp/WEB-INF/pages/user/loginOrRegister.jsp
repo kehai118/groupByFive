@@ -6,8 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<!DOCTYPE HTML>
-<html lang="zxx">
+<!DOCTYPE html>
+<html lang="zh">
 
 <head>
     <title>Home</title>
@@ -32,7 +32,8 @@
     </script>
     <!-- Meta tag Keywords -->
     <!-- css files -->
-    <link rel="stylesheet" href="/css/user/lr-style.css" type="text/css" media="all" />
+
+    <link rel="stylesheet" href="/css/user/lr-style.css" type="text/css" media="all">
     <!-- Style-CSS -->
     <link rel="stylesheet" href="https://www.jq22.com/jquery/font-awesome.4.7.0.css">
 
